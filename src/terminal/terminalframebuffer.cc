@@ -482,8 +482,14 @@ void Renditions::set_rendition( color_type num )
   bool value = num < 9;
   switch ( num ) {
     case 1:
+      set_attribute( bold, value );
+      break;
+    case 2:
+      set_attribute( faint, value );
+      break;
     case 22:
       set_attribute( bold, value );
+      set_attribute( faint, value );
       break;
     case 3:
     case 23:
@@ -536,6 +542,8 @@ std::string Renditions::sgr( void ) const
   ret.append( "\033[0" );
   if ( get_attribute( bold ) )
     ret.append( ";1" );
+  if ( get_attribute( faint ) )
+    ret.append( ";2") ;
   if ( get_attribute( italic ) )
     ret.append( ";3" );
   if ( get_attribute( underlined ) )
