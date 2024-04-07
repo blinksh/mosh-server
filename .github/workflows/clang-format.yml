@@ -1,6 +1,6 @@
 name: clang-format-lint
 
-on: [pull_request]
+on: [push, workflow_dispatch]
 
 jobs:
   build:
@@ -8,8 +8,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: DoozyX/clang-format-lint-action@v0.16.2
+    - uses: DoozyX/clang-format-lint-action@v0.17
       with:
         source: './src'
         style: file
-        clangFormatVersion: 14
+        clangFormatVersion: 16
